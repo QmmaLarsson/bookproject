@@ -4,7 +4,6 @@ import BookCard from "../components/BookCard";
 import SearchBar from "../components/SearchBar";
 
 const HomePage = () => {
-
     //State för att lagra alla böcker
     const [books, setBooks] = useState<BookInterface[]>([]);
     //State för att hantera felmeddelanden
@@ -12,13 +11,17 @@ const HomePage = () => {
     //State för att visa laddningsstatus
     const [loading, setLoading] = useState<boolean>(false);
 
-    //Hämtar böcker från API
     const fetchBooks = async (searchTerm: string) => {
         try {
             setLoading(true);
             setError(null);
 
-            const res = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(searchTerm)}&maxResults=10`);
+            //Hämtar böcker från API
+            const API_KEY = import.meta.env.VITE_GOOGLE_BOOKS_API_KEY;
+
+            const res = await fetch(
+                `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(searchTerm)}&maxResults=10&key=${API_KEY}`
+            );
 
             if (res.ok) {
                 const data = await res.json();
