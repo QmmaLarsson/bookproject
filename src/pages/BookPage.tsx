@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import type BookInterface from "../interfaces/BookInterface";
 import type ReviewInterface from "../interfaces/ReviewInterface";
+import ReviewForm from "../components/ReviewForm";
 
 //Sida som visar en enskild bok och dess recensioner
 const BookPage = () => {
@@ -16,6 +17,21 @@ const BookPage = () => {
     const [error, setError] = useState<string | null>(null);
     //State för att visa laddningsstatus
     const [loading, setLoading] = useState<boolean>(false);
+
+    //Hämtar recension från API
+    const fetchReviews = async () => {
+        try {
+            const resReviews = await fetch(`https://apiprojektdt210g.onrender.com/api/review?bookId=${bookId}`);
+
+            if (resReviews.ok) {
+                const dataReviews = await resReviews.json();
+                setReviews(dataReviews);
+            }
+
+        } catch (error) {
+            setError("Ett fel har uppstått, försök igen senare...");
+        }
+    };
 
     //Rensar bort onödiga tecken från texten
     const cleanText = (text: string) => text.replace(/<[^>]*>?/gm, "");
@@ -37,11 +53,7 @@ const BookPage = () => {
                 }
 
                 //Hämtar recension från API
-                const resReviews = await fetch(`https://apiprojektdt210g.onrender.com/api/review?bookId=${bookId}`);
-                if (resReviews.ok) {
-                    const dataReviews = await resReviews.json();
-                    setReviews(dataReviews);
-                }
+                await fetchReviews();
 
             } catch (error) {
                 setError("Ett fel har uppstått, försök igen senare...");
@@ -68,7 +80,7 @@ const BookPage = () => {
                     alt={book.volumeInfo.title || "Ingen titel"}
                 />
             )}
-            <p><p>{cleanText(book?.volumeInfo?.description || "Ingen beskrivning tillgänglig")}</p></p>
+            <p>{cleanText(book?.volumeInfo?.description || "Ingen beskrivning tillgänglig")}</p>
 
             {/*Recensioner*/}
             <h2>Recensioner</h2>
@@ -81,6 +93,11 @@ const BookPage = () => {
                     </li>
                 ))}
             </ul>
+
+            {/*Formilär*/}
+            {bookId && (
+                <ReviewForm bookId={bookId} onReviewAdded={fetchReviews} />
+            )}
         </>
     );
 };
