@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import type BookInterface from "../interfaces/BookInterface";
 import type ReviewInterface from "../interfaces/ReviewInterface";
 import ReviewForm from "../components/ReviewForm";
+import ReviewCard from "../components/ReviewCard";
 
 //Sida som visar en enskild bok och dess recensioner
 const BookPage = () => {
@@ -85,12 +86,10 @@ const BookPage = () => {
             {/*Recensioner*/}
             <h2>Recensioner</h2>
             {reviews.length === 0 && <p>Inga recensioner än.</p>}
+
             <ul>
                 {reviews.map((review) => (
-                    <li key={review._id}>
-                        <p><b>{typeof review.user === "object" ? review.user.username : "Anonym"}</b> ({review.rating}/5)</p>
-                        <p>{review.reviewText}</p>
-                    </li>
+                    <ReviewCard key={review._id} review={review} />
                 ))}
             </ul>
 
