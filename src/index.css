@@ -48,12 +48,6 @@ select {
     box-shadow: -16px 0 20px -18px rgba(0, 0, 0, 0.15), 16px 0 20px -18px rgba(0, 0, 0, 0.15);
     margin-inline: auto;
     min-height: 100vh;
-    /*Bakgrundsbild*/
-    background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)),
-        url('./assets/images/bg.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
     display: flex;
     flex-direction: column;
 }
