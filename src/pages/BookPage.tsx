@@ -1,4 +1,3 @@
-// pages/BookPage.tsx
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import type BookInterface from "../interfaces/BookInterface";
@@ -93,9 +92,9 @@ const BookPage = () => {
                 ))}
             </ul>
 
-            {/*Formilär*/}
+            {/*Formilär för att lägga till recension*/}
             {bookId && (
-                <ReviewForm bookId={bookId} onReviewAdded={fetchReviews} />
+                <ReviewForm bookId={bookId} bookTitle={book.volumeInfo.title} bookThumbnail={book.volumeInfo.imageLinks?.thumbnail} onReviewAdded={fetchReviews} />
             )}
         </>
     );

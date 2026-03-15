@@ -19,9 +19,7 @@ const HomePage = () => {
             //Hämtar böcker från API
             const API_KEY = import.meta.env.VITE_GOOGLE_BOOKS_API_KEY;
 
-            const res = await fetch(
-                `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(searchTerm)}&maxResults=10&key=${API_KEY}`
-            );
+            const res = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(searchTerm)}&maxResults=10&key=${API_KEY}`);
 
             if (res.ok) {
                 const data = await res.json();
