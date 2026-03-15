@@ -4,6 +4,7 @@ import type BookInterface from "../interfaces/BookInterface";
 import type ReviewInterface from "../interfaces/ReviewInterface";
 import ReviewForm from "../components/ReviewForm";
 import ReviewCard from "../components/ReviewCard";
+import "./BookPage.css";
 
 //Sida som visar en enskild bok och dess recensioner
 const BookPage = () => {
@@ -72,30 +73,39 @@ const BookPage = () => {
     return (
         <>
             {/*Bokinformation*/}
-            <h1>{book?.volumeInfo?.title || "Ingen titel tillgänglig"}</h1>
-            <p>Författare: {book?.volumeInfo?.authors?.join(", ") || "Okänd"}</p>
-            {book?.volumeInfo?.imageLinks?.thumbnail && (
-                <img
-                    src={book.volumeInfo.imageLinks.thumbnail}
-                    alt={book.volumeInfo.title || "Ingen titel"}
-                />
-            )}
-            <p>{cleanText(book?.volumeInfo?.description || "Ingen beskrivning tillgänglig")}</p>
+            <div className="book-info">
+                {book?.volumeInfo?.imageLinks?.thumbnail && (
+                    <img
+                        src={book.volumeInfo.imageLinks.thumbnail}
+                        alt={book.volumeInfo.title || "Ingen titel"}
+                    />
+                )}
+                <div>
+                    <h1>{book?.volumeInfo?.title || "Ingen titel tillgänglig"}</h1>
+                    <p>Författare: {book?.volumeInfo?.authors?.join(", ") || "Okänd"}</p>
+
+                    <p>{cleanText(book?.volumeInfo?.description || "Ingen beskrivning tillgänglig")}</p>
+                </div>
+            </div>
 
             {/*Recensioner*/}
-            <h2>Recensioner</h2>
-            {reviews.length === 0 && <p>Inga recensioner än.</p>}
+            <div className="reviews">
+                <h2>Recensioner</h2>
 
-            <ul>
-                {reviews.map((review) => (
-                    <ReviewCard key={review._id} review={review} />
-                ))}
-            </ul>
+                {reviews.length === 0 && <p>Inga recensioner än.</p>}
 
-            {/*Formilär för att lägga till recension*/}
-            {bookId && (
-                <ReviewForm bookId={bookId} bookTitle={book.volumeInfo.title} bookThumbnail={book.volumeInfo.imageLinks?.thumbnail} onReviewAdded={fetchReviews} />
-            )}
+                <ul>
+                    {reviews.map((review) => (
+                        <ReviewCard key={review._id} review={review} />
+                    ))}
+                </ul>
+            </div>
+            <div className="review-form">
+                {/*Formilär för att lägga till recension*/}
+                {bookId && (
+                    <ReviewForm bookId={bookId} bookTitle={book.volumeInfo.title} bookThumbnail={book.volumeInfo.imageLinks?.thumbnail} onReviewAdded={fetchReviews} />
+                )}
+            </div>
         </>
     );
 };

@@ -1,0 +1,70 @@
+.review-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 1.5rem;
+    background-color: #f5f5f5;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.review-form label {
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.review-form textarea {
+    flex: 1;
+    padding: 1rem;
+    min-height: 120px;
+    min-width: 300px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    outline: none;
+    transition: border 0.2s ease;
+}
+
+.review-form textarea:focus {
+    border-color: #666;
+}
+
+.review-form select {
+    padding: 0.8rem 1rem;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    outline: none;
+    transition: border 0.2s ease;
+}
+
+.review-form select:focus {
+    border-color: #666;
+}
+
+.review-form button {
+    padding: 12px 16px;
+    background-color: #666;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.review-form button:hover {
+    background-color: #949494;
+}
+
+.review-form button:active {
+    transform: scale(0.97);
+}
+
+/*Regler för mobil*/
+@media (max-width: 768px) {
+    .review-form form {
+        padding: 1rem;
+    }
+}

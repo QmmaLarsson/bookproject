@@ -1,5 +1,6 @@
 import { useState } from "react";
 import type { SyntheticEvent } from "react";
+import "./SearchBar.css";
 
 //Komponent tar emot en sökning och skickar den till HomePage
 const SearchBar = ({ onSearch }: { onSearch: (search: string) => void }) => {
@@ -15,7 +16,7 @@ const SearchBar = ({ onSearch }: { onSearch: (search: string) => void }) => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="search-bar" >
             <input type="text" value={search} placeholder="Sök böcker..." onChange={(e) => setSearch(e.target.value)} />
             <button type="submit">Sök</button>
         </form>

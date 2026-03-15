@@ -2,6 +2,7 @@ import { useState } from "react"
 import type BookInterface from "../interfaces/BookInterface";
 import BookCard from "../components/BookCard";
 import SearchBar from "../components/SearchBar";
+import "./HomePage.css";
 
 const HomePage = () => {
     //State för att lagra alla böcker
@@ -34,7 +35,8 @@ const HomePage = () => {
 
     return (
         <>
-            <h1>Böcker</h1>
+            <h1 style={{ fontSize: "5rem" }}>Välkommen till BookClub</h1>
+            <p style={{ maxWidth: "600px", margin: "auto" }}>Din plats för böcker och recensioner! Sök, läs och dela dina boktips och låt oss tillsammans skapa en värld av läsupplevelser.</p>
             <SearchBar onSearch={fetchBooks} />
 
             {error && <p className="error">{error}</p>}

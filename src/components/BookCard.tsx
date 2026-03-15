@@ -1,5 +1,6 @@
 import type BookInterface from "../interfaces/BookInterface";
 import { Link } from "react-router-dom";
+import "./BookCard.css";
 
 //Komponent som visar en bok från Google Books API
 const BookCard = ({ book }: { book: BookInterface }) => {

@@ -1,4 +1,5 @@
 import type ReviewInterface from "../interfaces/ReviewInterface";
+import "./ReviewCard.css";
 
 const ReviewCard = ({ review }: { review: ReviewInterface }) => {
     const username =

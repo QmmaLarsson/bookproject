@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import "./ReviewForm.css";
 
 const ReviewForm = ({ bookId, bookTitle, bookThumbnail, onReviewAdded }: { bookId: string; bookTitle: string; bookThumbnail?: string; onReviewAdded: () => void; }) => {
     //State för att lagra texten i recensionen

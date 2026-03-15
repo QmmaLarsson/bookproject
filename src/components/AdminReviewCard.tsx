@@ -1,5 +1,6 @@
 import { useState } from "react";
 import type ReviewInterface from "../interfaces/ReviewInterface";
+import "./AdminReviewCard.css";
 
 const AdminReviewCard = ({ review, onUpdated }: { review: ReviewInterface; onUpdated: () => void; }) => {
     //State som styr om recensionen är i redigeringsläge eller inte
@@ -82,7 +83,7 @@ const AdminReviewCard = ({ review, onUpdated }: { review: ReviewInterface; onUpd
     };
 
     return (
-        <li>
+        <li className="admin-review-card">
             {review.bookThumbnail && (
                 <img src={review.bookThumbnail} alt={review.bookTitle} />
             )}

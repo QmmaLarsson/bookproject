@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import type ReviewInterface from "../interfaces/ReviewInterface";
 import AdminReviewCard from "../components/AdminReviewCard";
+import "./AdminPage.css";
 
 const AdminPage = () => {
   //State för att lagra alla recensioner
@@ -49,7 +50,7 @@ const AdminPage = () => {
   return (
     <>
       <h1>Mina recensioner</h1>
-      <ul>
+      <ul className="admin-reviews">
         {reviews.map((review) => (
           <AdminReviewCard key={review._id} review={review} onUpdated={fetchMyReviews} />
         ))}

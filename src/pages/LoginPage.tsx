@@ -40,7 +40,7 @@ const LoginPage = () => {
   };
 
   return (
-    <div>
+    <div className="login-page">
       <h1>Logga in</h1>
       <form className="loginForm" onSubmit={handleSubmit}>
         {error && <p className="error">{error}</p>}

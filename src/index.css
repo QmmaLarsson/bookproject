@@ -1,0 +1,86 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    /*62,5% av 16px ger 10px*/
+    font-size: 62.5%;
+}
+
+body {
+    /*Textstorlek 16px som standard*/
+    font-size: 1.6rem;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    line-height: 1.5;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+h1 {
+    /*Textstorlek 32px som standard*/
+    font-size: 3.2rem;
+}
+
+h2 {
+    /*Textstorlek 24 som standard*/
+    font-size: 2.4rem;
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+h3 {
+    /*Textstorlek 20 som standard*/
+    font-size: 2.0rem;
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+button,
+input,
+textarea,
+select {
+    font: inherit;
+}
+
+.page {
+    max-width: 1920px;
+    box-shadow: -16px 0 20px -18px rgba(0, 0, 0, 0.15), 16px 0 20px -18px rgba(0, 0, 0, 0.15);
+    margin-inline: auto;
+    min-height: 100vh;
+    /*Bakgrundsbild*/
+    background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)),
+        url('./assets/images/bg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    /*Tar upp all överflödig yta (header plaeras i toppen och footern i botten)*/
+    flex: 1;
+    text-align: center;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+footer {
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+        url('./assets/images/books.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+    text-align: center;
+    padding: 2rem;
+    margin-top: 2rem;
+}
+
+p.error {
+    color: red;
+    font-weight: bold;
+    text-align: center;
+}
