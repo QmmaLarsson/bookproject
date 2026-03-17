@@ -2,6 +2,9 @@ import type BookInterface from "../interfaces/BookInterface";
 import { Link } from "react-router-dom";
 import "./BookCard.css";
 
+//Funktion som konverterar bilder till HTTPS
+const secureImage = (url?: string) => url?.replace('http://', 'https://');
+
 //Komponent som visar en bok från Google Books API
 const BookCard = ({ book }: { book: BookInterface }) => {
     return (
@@ -9,7 +12,7 @@ const BookCard = ({ book }: { book: BookInterface }) => {
             {/*Visa bild om det finns*/}
             {book.volumeInfo.imageLinks?.thumbnail && (
                 <img
-                    src={book.volumeInfo.imageLinks.thumbnail}
+                    src={secureImage(book.volumeInfo.imageLinks.thumbnail)}
                     alt={book.volumeInfo.title}
                 />
             )}
