@@ -2,6 +2,9 @@ import { useState } from "react";
 import type ReviewInterface from "../interfaces/ReviewInterface";
 import "./AdminReviewCard.css";
 
+//Funktion som konverterar bilder till HTTPS
+const secureImage = (url?: string) => url?.replace('http://', 'https://');
+
 const AdminReviewCard = ({ review, onUpdated }: { review: ReviewInterface; onUpdated: () => void; }) => {
     //State som styr om recensionen är i redigeringsläge eller inte
     const [isEditing, setIsEditing] = useState(false);
@@ -85,7 +88,7 @@ const AdminReviewCard = ({ review, onUpdated }: { review: ReviewInterface; onUpd
     return (
         <li className="admin-review-card">
             {review.bookThumbnail && (
-                <img src={review.bookThumbnail} alt={review.bookTitle} />
+                <img src={secureImage(review.bookThumbnail)} alt={review.bookTitle} />
             )}
             <h3>{review.bookTitle || "Okänd bok"}</h3>
             {isEditing ? (

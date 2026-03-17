@@ -6,6 +6,9 @@ import ReviewForm from "../components/ReviewForm";
 import ReviewCard from "../components/ReviewCard";
 import "./BookPage.css";
 
+//Funktion som konverterar bilder till HTTPS
+const secureImage = (url?: string) => url?.replace('http://', 'https://');
+
 //Sida som visar en enskild bok och dess recensioner
 const BookPage = () => {
     const { bookId } = useParams<{ bookId: string }>();
@@ -76,7 +79,7 @@ const BookPage = () => {
             <div className="book-info">
                 {book?.volumeInfo?.imageLinks?.thumbnail && (
                     <img
-                        src={book.volumeInfo.imageLinks.thumbnail}
+                        src={secureImage(book.volumeInfo.imageLinks.thumbnail)}
                         alt={book.volumeInfo.title || "Ingen titel"}
                     />
                 )}
