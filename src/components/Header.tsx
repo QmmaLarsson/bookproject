@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom"
 import { useAuth } from "../context/AuthContext"
 import "./Header.css";
+import logo from "../assets/images/logo.png";
 
 
 const Header = () => {
@@ -8,6 +9,7 @@ const Header = () => {
 
     return (
         <header>
+            <NavLink to="/"><img src={logo} alt="Logotyp" className="logo" /></NavLink>
             <ul className="main-menu">
                 <li className="main-li"><NavLink to="/" className="menu-link main-link">Startsida</NavLink></li>
                 {user && (<li><NavLink to="/admin" className="menu-link">Mina recensioner</NavLink></li>)}
